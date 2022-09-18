@@ -1,40 +1,42 @@
 from django.http import JsonResponse
-from .models import Student
-from .serializers import StudentSerializer
+from .models import Standard
+from .serializers import StandardSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+# Create your views here.
+
 
 @api_view(['GET', 'POST'])
-def student_list(request):
+def standard_list(request):
     if request.method == 'GET':
-        students = Student.objects.all()
-        serializer = StudentSerializer(students, many=True)
+        standards = Standard.objects.all()
+        serializer = StandardSerializer(standards, many=True)
         return Response(serializer.data)
-    
     if request.method == 'POST':
-        serializer = StudentSerializer(data = request.data)
+        serializer = StandardSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+
 @api_view(['GET', 'PUT', 'DELETE'])
-def student_detail(request, id):
+def standard_detail(request, id):
 
     try:
-        student = Student.objects.get(pk=id)
-    except Student.DoesNotExist:
+        standard = Standard.objects.get(pk=id)
+    except Standard.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        students = Student.objects.all()
-        serializer = StudentSerializer(students, many=True)
+        standards = Standard.objects.all()
+        serializer = StandardSerializer(standards, many=True)
         return Response(serializer.data)    
 
     elif request.method == 'PUT':
-        serializer = StudentSerializer(student, data=request.data)
+        serializer = StandardSerializer(standard, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -42,6 +44,6 @@ def student_detail(request, id):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'DELETE':
-        student.delete()
+        standard.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
