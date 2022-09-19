@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-$n50bz0sdxj&)+pd9dd#31z1!*-qev9tf20j4odi%qvole0%y+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://gloify-student-backend.herokuapp.com/',
+]
 
 # Application definition
 
