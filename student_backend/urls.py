@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import path
 from students import views
 from classes import views as views_class
+from student_class_maps import views as views_map
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('students/', include('students.urls'))
     path('students/', views.student_list),
     path('students/<int:id>', views.student_detail),
     path('standards/', views_class.standard_list),
-    path('standards/<int:id>', views_class.standard_detail)
+    path('standards/<int:id>', views_class.standard_detail),
+    path('maps/', views_map.map_list),
+    path('maps/<int:id>', views_map.map_detail),
 ]

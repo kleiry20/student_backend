@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'students',
     'classes',
+    'student_class_maps',
     'rest_framework',
     'corsheaders',
     
