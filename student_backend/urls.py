@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
 from students import views
 from classes import views as views_class
 from student_class_maps import views as views_map
@@ -27,4 +30,4 @@ urlpatterns = [
     path('standards/<int:id>', views_class.standard_detail),
     path('maps/', views_map.map_list),
     path('maps/<int:id>', views_map.map_detail),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

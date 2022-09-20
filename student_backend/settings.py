@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'gloify-student-backend.herokuapp.com',
+    '127.0.0.1'
 ]
 
 # Application definition
@@ -135,3 +136,4 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
